@@ -48,3 +48,34 @@ const fotos = [
 document.getElementById('invisiblePlay').addEventListener('click', function() {
   document.getElementById('bgMusic').play();
 });
+function atualizarContadorRomantico() {
+  const inicioNamoro = new Date('2022-09-17T00:00:00');
+  const agora = new Date();
+  
+  let diff = Math.floor((agora - inicioNamoro) / 1000); // diferença em segundos
+  
+  const anos = Math.floor(diff / (365 * 24 * 60 * 60));
+  diff -= anos * 365 * 24 * 60 * 60;
+  
+  const meses = Math.floor(diff / (30 * 24 * 60 * 60));
+  diff -= meses * 30 * 24 * 60 * 60;
+  
+  const dias = Math.floor(diff / (24 * 60 * 60));
+  diff -= dias * 24 * 60 * 60;
+  
+  const horas = Math.floor(diff / (60 * 60));
+  diff -= horas * 60 * 60;
+  
+  const minutos = Math.floor(diff / 60);
+  const segundos = diff % 60;
+  
+  const texto = `❤️ ${anos}a ${meses}m ${dias}d ${horas}h ${minutos}min ${segundos}s ❤️`;
+  document.getElementById('tempoJuntos').textContent = texto;
+  
+  // Atualiza a cada segundo
+  setTimeout(atualizarContadorRomantico, 1000);
+}
+
+// Inicia o contador
+document.addEventListener('DOMContentLoaded', atualizarContadorRomantico);
+const texto = `Nossa jornada de amor: ${anos} ano${anos !== 1 ? 's' : ''}, ${meses} mês${meses !== 1 ? 'es' : ''}, ${dias} dia${dias !== 1 ? 's' : ''}, ${horas}h ${minutos}min ${segundos}s`;
