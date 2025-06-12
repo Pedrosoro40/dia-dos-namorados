@@ -15,20 +15,19 @@ const fotos = [
       "../img/IMG-20250610-WA0074.jpg",
     ];
 
-    let index = 0;
-    let intervalo;
+     let index = 0;
 
     function iniciarSlideshow() {
       const slideshow = document.getElementById('slideshow');
       const img = document.getElementById('fotoAtual');
       slideshow.style.display = 'block';
       
-      intervalo = setInterval(() => {
+      setInterval(() => {
         index = (index + 1) % fotos.length;
         img.style.opacity = 0;
         setTimeout(() => {
           img.src = fotos[index];
           img.style.opacity = 1;
         }, 500);
-      }, 3000); // troca a cada 3 segundos
+      }, 3000);
     }
