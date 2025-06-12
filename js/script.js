@@ -31,3 +31,20 @@ const fotos = [
         }, 500);
       }, 3000);
     }
+    window.onload = function() {
+  const audio = document.getElementById('bgMusic');
+  const btn = document.getElementById('invisiblePlay');
+  
+  // Simula um clique programático (funciona na maioria dos navegadores)
+  setTimeout(() => {
+    btn.click();
+    audio.play().catch(e => {
+      // Se falhar, tenta novamente com interação real
+      document.body.addEventListener('click', () => audio.play(), { once: true });
+    });
+  }, 1000);
+};
+
+document.getElementById('invisiblePlay').addEventListener('click', function() {
+  document.getElementById('bgMusic').play();
+});
